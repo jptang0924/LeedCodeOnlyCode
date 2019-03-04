@@ -131,6 +131,13 @@ public class LeedCodeTencentSortAndSearch {
     }
 
 	
-	
+	public static void test(){
+		Integer k = new Integer(4);
+		a(k);
+		System.out.println(k);
+	}
+	private static void a(Integer k){
+		k = k-1;
+	}
 	
 }

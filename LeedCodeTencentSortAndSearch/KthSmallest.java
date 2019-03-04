@@ -39,8 +39,27 @@ public class KthSmallest {
 	 }
 	 
 	 public static int kthSmallest(TreeNode root, int k) {
+		 TreeNode ans = new TreeNode(0);
+		 inOrder(root, k, ans);
+		 return ans.val;
+	 }
+	 
+	 //中序遍历
+	 private static int inOrder(TreeNode root, int count, TreeNode ans){
+		 if(root!=null && count>0){
+			 count = inOrder(root.left, count, ans);
+			 count--;
+			 if(count==0){
+				 ans.val = root.val;
+				 return count;
+			 }
+			 count = inOrder(root.right, count, ans);
+		 }
+		 return count;
+	 }
+	 
+	 //中序遍历迭代
+	 private static void inOrder2(TreeNode root, int count, TreeNode ans){
 		 
-		 
-		 return 0;
 	 }
 }

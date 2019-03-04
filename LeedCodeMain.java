@@ -1,5 +1,6 @@
 import java.util.List;
 
+import LeedCodeTencentSortAndSearch.KthSmallest;
 import LeedCodeTencentSortAndSearch.LeedCodeTencentSortAndSearch;
 import LeedCodeTencentSortAndSearch.SortList;
 
@@ -59,8 +60,10 @@ public class LeedCodeMain {
 //		int ans = LeedCodeTencentSortAndSearch.search(new int[]{4,5,6,7,0,1,2}, 3);
 //		System.out.println(ans);
 		
-		int ans = LeedCodeTencentSortAndSearch.findKthLargest3(new int[]{3,2,3,1,2,4,5,5,6}, 4);
-		System.out.println(ans);
+//		int ans = LeedCodeTencentSortAndSearch.findKthLargest3(new int[]{3,2,3,1,2,4,5,5,6}, 4);
+//		System.out.println(ans);
+		
+		LeedCodeTencentSortAndSearch.test();
 	}
 
 }
