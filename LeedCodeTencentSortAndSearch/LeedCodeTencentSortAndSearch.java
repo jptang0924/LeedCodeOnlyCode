@@ -137,7 +137,7 @@ public class LeedCodeTencentSortAndSearch {
 		System.out.println(k);
 	}
 	private static void a(Integer k){
-		k = k-1;
+		
 	}
 	
 }
