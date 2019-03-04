@@ -31,7 +31,7 @@ package LeedCodeTencentSortAndSearch;
 public class KthSmallest {
 	
 	 //Definition for a binary tree node.
-	 public class TreeNode {
+	 public static class TreeNode {
 	     int val;
 	     TreeNode left;
 	     TreeNode right;
