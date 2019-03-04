@@ -93,7 +93,44 @@ public class LeedCodeTencentSortAndSearch {
     }
 	//快速选择 (快排变体)：时间复杂度 O(N)，空间复杂度 O(1)
 	public static int findKthLargest3(int[] nums, int k) {
-		
-		return 0;
+		int l=0, r=nums.length-1;
+		while(l<r){
+			int mid = partition(nums, l, r);
+			if(mid==k-1)	break;
+			else if(mid>k-1)	r = mid-1;
+			else	l = mid+1;
+		}
+		return nums[k-1];
     }
+	private static int partition(int[] nums, int left, int right){
+		int index = left;
+		int base = nums[index];
+		swap(nums, index, left);
+		int l = left;
+		int r = right;
+		while(l<r){
+			while(l<r && nums[l]>=base)	l++;
+			if(l<r){
+				swap(nums, l, r);
+				r--;
+			}
+			while(l<r && nums[r]<=base)	r--;
+			if(l<r){
+				swap(nums, l, r);
+				l++;
+			}
+		}
+		if(nums[l]<base)	l--;	
+		swap(nums, index, l);
+		return l;
+	}
+	private static void swap(int[] a, int i, int j) {
+        int t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+    }
+
+	
+	
+	
 }
