@@ -31,14 +31,6 @@ import java.util.Stack;
  *
  */
 public class KthSmallest {
-	
-	 //Definition for a binary tree node.
-	 public static class TreeNode {
-	     int val;
-	     TreeNode left;
-	     TreeNode right;
-	     TreeNode(int x) { val = x; }
-	 }
 	 
 	 public static int kthSmallest(TreeNode root, int k) {
 		 TreeNode ans = new TreeNode(0);
