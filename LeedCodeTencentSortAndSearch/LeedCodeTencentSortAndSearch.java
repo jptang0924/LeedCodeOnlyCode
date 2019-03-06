@@ -159,7 +159,6 @@ public class LeedCodeTencentSortAndSearch {
 	 * 给定一个非空二叉树，返回其最大路径和。
 	 * 本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。
 	 * 示例 1:
-	 * l+r+(1+r)*l+(1+l)*r
 	 * 输入: [1,2,3]
 	 *        1
 	 *       / \
@@ -177,8 +176,18 @@ public class LeedCodeTencentSortAndSearch {
 	 * @return
 	 */
 	public static int maxPathSum(TreeNode root) {
+		if(root==null)	return 0;
+		int[] arr = new int[]{Integer.MIN_VALUE};
+		maxValue(root, arr);
+		return arr[0];
+	}
+	private static int maxValue(TreeNode root, int[] arr){
 		if(root==null) return 0;
-
-		return 0;
+		int left = maxValue(root.left, arr);
+		int right = maxValue(root.right, arr);
+		int maxRootAsTop = root.val + (left>0?left:0) + (right>0?right:0);
+		arr[0] = Math.max(arr[0], maxRootAsTop);
+		int maxWithRootButNotTop = root.val + Math.max(left, Math.max(right, 0));
+		return maxWithRootButNotTop;
 	}
 }
