@@ -1,5 +1,8 @@
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LeedCodeTencentBacktrace {
 
@@ -90,8 +93,25 @@ public class LeedCodeTencentBacktrace {
      */
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
-
+        List<Integer> temp = Arrays.stream(nums).boxed().collect(Collectors.toList());
+        permute(ans, temp, 0);
         return ans;
+    }
+    private void permute(List<List<Integer>> ans, List<Integer> nums, int begin){
+        if(begin>=nums.size()){
+            ans.add(new ArrayList<>(nums));
+            return;
+        }
+        int temp;
+        for(int i=begin;i<nums.size();i++){
+            temp = nums.get(i);
+            nums.set(i, nums.get(begin));
+            nums.set(begin, temp);
+            permute(ans, nums, begin+1);
+            temp = nums.get(i);
+            nums.set(i, nums.get(begin));
+            nums.set(begin, temp);
+        }
     }
 
     /**
@@ -121,11 +141,20 @@ public class LeedCodeTencentBacktrace {
      * @param n
      * @return
      */
-    public static List<Integer> grayCode(int n) {
-        if(n==0) return  new ArrayList<>((0));
+    public List<Integer> grayCode(int n) {
         List<Integer> ans = new ArrayList<>();
-        int[] bi = new int[n];
-        return null;
+        int[] curNums = new int[]{0};
+        ans.add(curNums[0]);
+        grayCode(ans, curNums, n);
+        return ans;
     }
+    private void grayCode(List<Integer> ans, int[] curNums, int n){
+        if(n==0) return;
+        grayCode(ans, curNums, n-1);
+        curNums[0] = curNums[0] ^ (1<<n-1);
+        ans.add(curNums[0]);
+        grayCode(ans, curNums, n-1);
+    }
+
 }
 
